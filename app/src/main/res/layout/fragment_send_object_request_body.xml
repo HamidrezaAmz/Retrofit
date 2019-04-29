@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.FragmentSendObjectRequestBody">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:text="Hamidreza amz" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Body"
+        android:text="HamidrezaAmz@gamil.com" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editText_user_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="User Id"
+        android:text="27" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="SUBMIT" />
+
+</LinearLayout>

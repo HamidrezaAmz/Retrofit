@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".fragments.FragmentUploadFile">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="20dp"
+        android:background="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/button_choose_file"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="choose file" />
+
+    <EditText
+        android:id="@+id/editText_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="description"
+        android:text="This is a description" />
+
+    <Button
+        android:id="@+id/button_upload_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload file" />
+
+</LinearLayout>

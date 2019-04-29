@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.FragmentMenu">
+
+    <Button
+        android:id="@+id/button_simple_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIMPLE API CALL" />
+
+    <Button
+        android:id="@+id/button_send_object"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEND OBJECT IN REQUEST BODY" />
+
+    <Button
+        android:id="@+id/button_upload_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPLOAD FILE" />
+
+</LinearLayout>

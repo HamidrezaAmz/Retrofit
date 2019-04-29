@@ -2,15 +2,13 @@ package com.example.myretrofittest;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.myretrofittest.fragments.FragmentMenu;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,26 +23,39 @@ public class MainActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("Loading....");
-        progressDialog.show();
+        progressDialog.setCancelable(false);
 
-        /*Create handle for the RetrofitInstance interface*/
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<List<RetroPhoto>> call = service.getAllPhotos();
-        call.enqueue(new Callback<List<RetroPhoto>>() {
-            @Override
-            public void onResponse(Call<List<RetroPhoto>> call, Response<List<RetroPhoto>> response) {
-                progressDialog.dismiss();
-                List<RetroPhoto> photoList = response.body();
-                for (RetroPhoto photo : photoList) {
-                    Log.i("Member name: ", photo.getTitle());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<RetroPhoto>> call, Throwable t) {
-                progressDialog.dismiss();
-                Log.i(TAG, "onFailure: Something went wrong...Please try later!");
-            }
-        });
+        setFragment(new FragmentMenu());
     }
+
+    @Override
+    public void onBackPressed() {
+        int fragments = getSupportFragmentManager().getBackStackEntryCount();
+        if (fragments == 1) {
+            finish();
+        } else if (getFragmentManager().getBackStackEntryCount() > 1) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public void showDialog() {
+        if (progressDialog != null && !progressDialog.isShowing())
+            progressDialog.show();
+    }
+
+    public void hideDialog() {
+        if (progressDialog != null && progressDialog.isShowing())
+            progressDialog.hide();
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
+        fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        fragmentTransaction.commit();
+    }
+
 }
